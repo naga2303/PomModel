@@ -1,0 +1,21 @@
+{
+  "name": "playwrightpom",
+  "version": "1.0.0",
+  "description": "to create playwright test case using pom design pattern",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naga2303/playwrightpom.git"
+  },
+  "author": "Nagarajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naga2303/playwrightpom/issues"
+  },
+  "homepage": "https://github.com/naga2303/playwrightpom#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.45.2",
+    "@types/node": "^20.14.11"
+  }
+}
