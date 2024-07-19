@@ -1,4 +1,4 @@
-class ElectronicsProductPage{
+export class ElectronicsProductPage{
 
     constructor(page){
         this.page = page;
@@ -20,14 +20,21 @@ class ElectronicsProductPage{
     {
         const selectMinOptions = await this.page.locator(this.priceMin);
         await selectMinOptions.selectOption(value);
+        await this.page.waitForSelector(this.priceMin+'/option[@value="100"]')
     }
     async selectMax(value){
         const selectMaxOption = await this.page.locator(this.priceMax);
         await selectMaxOption.selectOption(value);
+        
     }
     async findTotalGameResults(){
+        await this.page.waitForSelector(this.totalGameResults)
         let totalResult = await this.page.locator(this.totalGameResults).all()
         console.log(totalResult.length)
     }
+    async clickFirstProduct(){
+        await this.page.click("("+this.totalGameResults+")[1]");
+    }
      
 }
+export default ElectronicsProductPage;
