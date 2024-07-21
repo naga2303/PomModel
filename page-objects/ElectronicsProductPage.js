@@ -1,16 +1,21 @@
+const {test} = require('@playwright/test')
 export class ElectronicsProductPage{
+
 
     constructor(page){
         this.page = page;
-        this.gaming = "//a[text()='Gaming']";
+        this.gaming = "//a[text()='Gaming & Accessories']";
         this.games = "//a[text()='Games']";
         this.priceMin = "(//select[@class='Gn+jFg'])[1]";
         this.priceMax = "(//select[@class='Gn+jFg'])[2]";
         this.totalGameResults = "//div[@class='slAVV4']";
+        this.totalGamesPages = "//span[@class='BT4kdg']"
         
     }
     async hoverGaming(){
-        await this.page.hover(this.gaming);
+        await this.page.click(this.gaming);
+        
+        
     }
     async clickGames(){
         await this.page.waitForSelector(this.games);
@@ -20,7 +25,9 @@ export class ElectronicsProductPage{
     {
         const selectMinOptions = await this.page.locator(this.priceMin);
         await selectMinOptions.selectOption(value);
-        await this.page.waitForSelector(this.priceMin+'/option[@value="100"]')
+        //await this.page.waitForSelector(this.waitFormMinValue)
+        await this.page.waitForTimeout(5000);
+        
     }
     async selectMax(value){
         const selectMaxOption = await this.page.locator(this.priceMax);
@@ -35,6 +42,16 @@ export class ElectronicsProductPage{
     async clickFirstProduct(){
         await this.page.click("("+this.totalGameResults+")[1]");
     }
-     
+    async findAllPagesTotalResults(){
+        test.step("",async()=>{
+            await this.page.waitForSelector(this.totalGamesPages);
+            let totalPageValue = await this.page.locator(this.totalGamesPages).textContent();
+            let totalArrayValue = totalPageValue.split(" ");
+            console.log(totalArrayValue[totalArrayValue.length-2])
+        })
+        
+        //console.log(totalPageValue);
+    
+    }
 }
 export default ElectronicsProductPage;

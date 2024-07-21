@@ -17,11 +17,13 @@ test.describe("Electronics Page Testing",()=>{
         await ELECTRONICSPRODUCT.hoverGaming();
         await ELECTRONICSPRODUCT.clickGames();
         await ELECTRONICSPRODUCT.findTotalGameResults();
+        await ELECTRONICSPRODUCT.findAllPagesTotalResults();
         
         await ELECTRONICSPRODUCT.selectMin("100")
         await ELECTRONICSPRODUCT.selectMax("1500")
         await page.waitForTimeout(5000);
         await ELECTRONICSPRODUCT.findTotalGameResults();
+        await ELECTRONICSPRODUCT.findAllPagesTotalResults();
         await ELECTRONICSPRODUCT.clickFirstProduct();
         
     })
